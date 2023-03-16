@@ -31,53 +31,50 @@ namespace Diamante
                     }
                     else
                     {
-                        String[,] i = new String[d , d];
-                        int a = (d / 2);
+                        String[,] diamante = new String[d , d];
+                        int meio = (d / 2);
                         d--;
-                        int e = a;
-                        int f = a;
-                        for(int fl=0; fl<=a; fl++)
+                        int inicio = meio; //meio
+                        int fim = meio; //
+                        for(int linha=0; linha<=meio; linha++)
                         {
-                            for (int fa = 0; fa <=d; fa++)
+                            for (int coluna = 0; coluna <=d; coluna++)
                             {
-                                if (e <= fa)
-                                { 
-                                    if (fa <= f) {
-                                        i[fl, fa] = "x";
-                                }
-                                }else
-                                {
-                                    i[fl, fa] = " ";
-                                }
-                                
+                                if (inicio <= coluna && coluna <= fim)
+                                    { 
+                                        diamante[linha, coluna] = "x";
+                                    }else
+                                    {
+                                        diamante[linha, coluna] = " ";
+                                    }
                             }
-                            e--;
-                            f++;
+                            inicio--;
+                            fim++;
                         }
-                        e++;
-                        f--;
-                        for (int fz = a; fz <=d; fz++)
+                        inicio++;
+                        fim--;
+                        for (int linha = meio; linha <=d; linha++)
                         {
-                            for (int fx = 0; fx <=d; fx++)
+                            for (int coluna = 0; coluna <=d; coluna++)
                             {
-                                if (e <= fx)
-                                {if(fx <= f) {
-                                    i[fz, fx] = "x";
+                                if (inicio <= coluna)
+                                {if(coluna <= fim) {
+                                    diamante[linha, coluna] = "x";
                                 }}
                                 else
                                 {
-                                    i[fz, fx] = " ";
+                                    diamante[linha, coluna] = " ";
                                 }
 
                             }
-                            e++;
-                            f--;
+                            inicio++;
+                            fim--;
                         }
-                        for(int o = 0; o <=d; o++)
+                        for(int l = 0; l <=d; l++)
                         {
-                            for(int l = 0; l <=d; l++)
+                            for(int c = 0; c <=d; c++)
                             {
-                                Console.Write($"{i[o, l]}");
+                                Console.Write($"{diamante[l, c]}");
                             }
                             Console.WriteLine();
                         }
